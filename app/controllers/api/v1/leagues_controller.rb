@@ -6,7 +6,7 @@ class Api::V1::LeaguesController < ApplicationController
 	# => 
 
 
-	before_action :find_league, only: [:show]
+	before_action :find_league, only: [:show, :allseasonforleague]
 
 	# GET /leagues 
 	def index
@@ -34,9 +34,16 @@ class Api::V1::LeaguesController < ApplicationController
 		
 	# end
 
-	# def destroy
+	def allseasonforleague
 		
-	# end
+		@league = League.find(params[:id])
+
+		@seasons=Season.where(league: League.find(@league.id))
+
+		render :json => {league: @league,
+							seasons: @seasons}
+
+	end
 
 	private
 
