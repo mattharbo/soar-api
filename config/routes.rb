@@ -11,10 +11,12 @@ Rails.application.routes.draw do
 
 		get '/leagues/', to: 'leagues#index'
 		get '/leagues/:id', to: 'leagues#show'
+    get '/leagues/:id/seasons', to: 'leagues#allseasonforleague'
+
 		get '/seasons/', to: 'seasons#index'
 		get '/seasons/:id', to: 'seasons#show'
 
-		get '/leagues/:id/seasons', to: 'leagues#allseasonforleague'
+    get '/clubs/', to: 'clubs#index'
   	end
   end
 

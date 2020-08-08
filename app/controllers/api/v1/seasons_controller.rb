@@ -1,10 +1,9 @@
 class Api::V1::SeasonsController < ApplicationController
 
-
 	before_action :find_season, only: [:show]
 
 	def index
-		@seasons = Season.all
+		@seasons = Season.select(:id,:year,:league_id,:stage)
 		render json: @seasons
 	end
 
