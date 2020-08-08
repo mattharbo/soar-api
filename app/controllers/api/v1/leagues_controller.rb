@@ -19,32 +19,24 @@
 	end
 
 	# def new
-
 	# end
 
 	# def create
-
 	# end
 
 	# def edit
-
 	# end
 
 	# def update
-
 	# end
 
 	def allseasonforleague
-
-		@league=League.find(params[:id])
-
 		@seasons=Season.where(league: League.find(@league.id)).select(:id,:year,:stage)
 
-		render :json => {league_id: @league.id,
-							league_name: @league.name,
+		render :json => {
+							name: @league.name,
 							seasons: @seasons
 						}
-
 	end
 
 	private
