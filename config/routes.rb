@@ -17,6 +17,7 @@ Rails.application.routes.draw do
 
 		get '/seasons/', to: 'seasons#index'
 		get '/seasons/:id', to: 'seasons#show'
+    post '/seasons/new', to: 'seasons#create'
 
     get '/clubs/', to: 'clubs#index'
     get '/clubs/:id', to: 'clubs#clubdetails'
