@@ -1,11 +1,11 @@
-	class Api::V1::LeaguesController < ApplicationController
+	class Api::V1::LeaguesController < SecuredController
 
 
 	# Please check the Medium article(s) that help(s) me to declare the controller
 	# => https://medium.com/@oliver.seq/creating-a-rest-api-with-rails-2a07f548e5dc
 	# =>
 
-
+	skip_before_action :authorize_request, only: [:index]
 	before_action :find_league, only: [:show, :allseasonforleague]
 
 	# GET /leagues

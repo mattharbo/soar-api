@@ -1,4 +1,4 @@
-class Api::V1::ClubsController < ApplicationController
+class Api::V1::ClubsController < SecuredController
 
   before_action :find_club, only: [:clubdetails]
 

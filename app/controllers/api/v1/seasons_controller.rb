@@ -1,5 +1,6 @@
-class Api::V1::SeasonsController < ApplicationController
+class Api::V1::SeasonsController < SecuredController
 
+	skip_before_action :authorize_request, only: [:index]
 	before_action :find_season, only: [:show]
 
 	def index
