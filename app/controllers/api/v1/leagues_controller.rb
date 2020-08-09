@@ -6,7 +6,7 @@
 	# =>
 
 	skip_before_action :authorize_request, only: [:index]
-	before_action :find_league, only: [:show, :allseasonforleague]
+	before_action :find_league, only: [:show, :allseasonforleague, :update]
 
 	# GET /leagues
 	def index
@@ -18,17 +18,19 @@
 		render json: @league
 	end
 
-	# def new
-	# end
+	def create
+    new_league = League.create!(league_params)
+    render json: new_league, status: :created
+  end
 
-	# def create
-	# end
-
-	# def edit
-	# end
-
-	# def update
-	# end
+	def update
+		if @league
+			@league.update(league_params)
+			render json: {message: "League successfully updated!", league: @league}, status: 200
+		else
+			render json: {message: "Unable to update the league"}, status: 400
+		end
+  end
 
 	def allseasonforleague
 		@seasons=Season.where(league: League.find(@league.id)).select(:id,:year,:stage)
@@ -44,5 +46,9 @@
 	def find_league
 		@league = League.find(params[:id])
 	end
+
+	def league_params
+    params.permit(:name)
+  end
 
 end
