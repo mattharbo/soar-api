@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_13_124539) do
+ActiveRecord::Schema.define(version: 2020_08_13_133045) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,6 +21,22 @@ ActiveRecord::Schema.define(version: 2020_08_13_124539) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "acronym"
+  end
+
+  create_table "games", force: :cascade do |t|
+    t.bigint "type_id", null: false
+    t.bigint "gstate_id", null: false
+    t.string "round"
+    t.date "date"
+    t.time "time"
+    t.bigint "hometeam_id"
+    t.bigint "awayteam_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["awayteam_id"], name: "index_games_on_awayteam_id"
+    t.index ["gstate_id"], name: "index_games_on_gstate_id"
+    t.index ["hometeam_id"], name: "index_games_on_hometeam_id"
+    t.index ["type_id"], name: "index_games_on_type_id"
   end
 
   create_table "gstates", force: :cascade do |t|
@@ -58,6 +74,10 @@ ActiveRecord::Schema.define(version: 2020_08_13_124539) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  add_foreign_key "games", "gstates"
+  add_foreign_key "games", "types"
+  add_foreign_key "games", "hometeam"
+  add_foreign_key "games", "awayteam"
   add_foreign_key "seasons", "leagues"
   add_foreign_key "teams", "clubs"
 end
