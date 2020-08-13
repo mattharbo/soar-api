@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  get 'games/show'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
   namespace :api do
@@ -29,6 +30,8 @@ Rails.application.routes.draw do
 
       get '/statuses/', to: 'gstates#index'
       post '/statuses/new', to: 'gstates#create'
+
+      get '/game/:id', to: 'games#show'
   	end
   end
 
