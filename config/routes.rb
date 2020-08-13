@@ -26,6 +26,9 @@ Rails.application.routes.draw do
 
       get '/types/', to: 'types#index'
       post '/types/new', to: 'types#create'
+
+      get '/statuses/', to: 'gstates#index'
+      post '/statuses/new', to: 'gstates#create'
   	end
   end
 

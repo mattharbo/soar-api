@@ -1,0 +1,2 @@
+class Gstate < ApplicationRecord
+end
