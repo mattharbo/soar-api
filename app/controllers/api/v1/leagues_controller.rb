@@ -26,7 +26,8 @@
 	def update
 		if @league
 			@league.update(league_params)
-			render json: {message: "League successfully updated!", league: @league}, status: 200
+			render json: {message: "League successfully updated!", league: @league},
+				status: 200
 		else
 			render json: {message: "Unable to update the league"}, status: 400
 		end
