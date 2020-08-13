@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
 
-  get 'games/show'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
   namespace :api do
@@ -11,25 +10,26 @@ Rails.application.routes.draw do
 		  # end
 
   		get '/leagues/', to: 'leagues#index'
-  		get '/leagues/:id', to: 'leagues#show'
-      get '/leagues/:id/seasons', to: 'leagues#allseasonforleague'
-      post '/leagues/new', to: 'leagues#create'
-      put '/leagues/:id/edit', to: 'leagues#update'
+  		get '/league/:id', to: 'leagues#show'
+      get '/league/:id/seasons', to: 'leagues#allseasonforleague'
+      post '/league/new', to: 'leagues#create'
+      put '/league/:id/edit', to: 'leagues#update'
 
   		get '/seasons/', to: 'seasons#index'
-  		get '/seasons/:id', to: 'seasons#show'
-      post '/seasons/new', to: 'seasons#create'
+  		get '/season/:id', to: 'seasons#show'
+      post '/season/new', to: 'seasons#create'
 
       get '/clubs/', to: 'clubs#index'
-      get '/clubs/:id', to: 'clubs#clubdetails'
+      get '/club/:id', to: 'clubs#clubdetails'
+      post '/club/new', to: 'clubs#create'
 
       get '/teams/', to: 'teams#index'
 
       get '/types/', to: 'types#index'
-      post '/types/new', to: 'types#create'
+      post '/type/new', to: 'types#create'
 
       get '/statuses/', to: 'gstates#index'
-      post '/statuses/new', to: 'gstates#create'
+      post '/statuse/new', to: 'gstates#create'
 
       get '/game/:id', to: 'games#show'
   	end
