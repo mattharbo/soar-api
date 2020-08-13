@@ -1,12 +1,6 @@
 Rails.application.routes.draw do
-  namespace :api do
-    namespace :v1 do
-      get 'teams/index'
-    end
-  end
-  get 'pages/index'
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
+  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
   namespace :api do
   	namespace :v1 do
@@ -29,6 +23,9 @@ Rails.application.routes.draw do
       get '/clubs/:id', to: 'clubs#clubdetails'
 
       get '/teams/', to: 'teams#index'
+
+      get '/types/', to: 'types#index'
+      post '/types/new', to: 'types#create'
   	end
   end
 
