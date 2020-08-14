@@ -25,6 +25,7 @@ Rails.application.routes.draw do
       put '/club/:id/edit', to: 'clubs#update'
 
       get '/teams/', to: 'teams#index'
+      post '/team/new', to: 'teams#create'
 
       get '/types/', to: 'types#index'
       post '/type/new', to: 'types#create'
