@@ -30,7 +30,7 @@ Rails.application.routes.draw do
       post '/type/new', to: 'types#create'
 
       get '/statuses/', to: 'gstates#index'
-      post '/statuse/new', to: 'gstates#create'
+      post '/status/new', to: 'gstates#create'
 
       get '/game/:id', to: 'games#show'
       post '/game/new', to: 'games#create'
