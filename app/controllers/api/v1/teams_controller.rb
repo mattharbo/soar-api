@@ -8,7 +8,7 @@ class Api::V1::TeamsController < SecuredController
   end
 
   def create
-		new_team = Team.create!(club:Team.find(params[:club]),
+		new_team = Team.create!(club:Club.find(params[:club]),
       level:params[:level])
 		render json: new_team, status: :created
   end
