@@ -33,6 +33,7 @@ Rails.application.routes.draw do
       post '/statuse/new', to: 'gstates#create'
 
       get '/game/:id', to: 'games#show'
+      post '/game/new', to: 'games#create'
   	end
   end
 
