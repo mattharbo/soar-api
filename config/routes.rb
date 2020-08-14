@@ -22,6 +22,7 @@ Rails.application.routes.draw do
       get '/clubs/', to: 'clubs#index'
       get '/club/:id', to: 'clubs#clubdetails'
       post '/club/new', to: 'clubs#create'
+      put '/club/:id/edit', to: 'clubs#update'
 
       get '/teams/', to: 'teams#index'
 

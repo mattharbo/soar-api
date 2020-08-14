@@ -1,6 +1,6 @@
 class Api::V1::ClubsController < SecuredController
 
-  before_action :find_club, only: [:clubdetails]
+  before_action :find_club, only: [:clubdetails, :update]
 
   def index
     @clubs = Club.select(:id,:shortname,:name,:town,:acronym)
@@ -24,10 +24,24 @@ class Api::V1::ClubsController < SecuredController
 						}
   end
 
+  def update
+		if @club
+			@club.update(club_params)
+			render json: {message: "Club successfully updated!", league: @club},
+				status: 200
+		else
+			render json: {message: "Unable to update the club"}, status: 400
+		end
+  end
+
   private
 
 	def find_club
 		@club = Club.find(params[:id])
 	end
+
+  def club_params
+    params.permit(:name, :shortname, :acronym, :town)
+  end
 
 end
